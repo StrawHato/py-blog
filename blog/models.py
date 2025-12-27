@@ -18,7 +18,7 @@ class Post(models.Model):
         related_name="posts"
     )
     title = models.CharField(max_length=255)
-    content = models.CharField(max_length=255)
+    content = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -37,7 +37,7 @@ class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments"
     )
-    content = models.CharField(max_length=255)
+    content = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:

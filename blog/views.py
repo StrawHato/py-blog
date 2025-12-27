@@ -10,8 +10,8 @@ from blog.models import Post
 def index(request):
     posts = (
         Post.objects
-        .select_related("owner")
-        .prefetch_related("comments")
+        .select_related("author")
+        .prefetch_related("author__comments")
     )
 
     paginator = Paginator(posts, 5)

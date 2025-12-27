@@ -7,9 +7,10 @@ from blog.models import Post, Comment, User
 
 admin.site.unregister(Group)
 
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ("owner", "title", "content", "created_time")
+    list_display = ("author", "title", "content", "created_time")
     list_filter = ("title",)
     search_fields = ("title",)
 
