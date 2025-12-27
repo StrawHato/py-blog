@@ -33,8 +33,8 @@ class PostDetailView(DetailView):
         return (
             super()
             .get_queryset()
-            .select_related("owner")
-            .prefetch_related("comments__user")
+            .select_related("author")
+            .prefetch_related("comments__author")
         )
 
     def get_context_data(self, **kwargs):
