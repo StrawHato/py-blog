@@ -19,7 +19,7 @@ def index(request):
     page_obj = paginator.get_page(page_number)
 
     context = {
-        "posts": page_obj.object_list,
+        "post_list": page_obj.object_list,
         "page_obj": page_obj,
     }
 
@@ -28,6 +28,7 @@ def index(request):
 
 class PostDetailView(DetailView):
     model = Post
+
     def get_queryset(self):
         return (
             super()

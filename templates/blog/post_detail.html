@@ -17,7 +17,7 @@
   {% for comment in post.comments.all %}
     <div class="comment">
       <div class="comment-header">
-        <strong>{{ comment.user.username }}</strong>
+        <strong>{{ comment.author.username }}</strong>
         <small class="comment-date">
           {{ comment.created_time|date:"M d, Y H:i" }}
         </small>

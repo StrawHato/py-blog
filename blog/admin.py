@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 
-from blog.models import Post, Commentary, User
+from blog.models import Post, Comment, User
 
 
 admin.site.unregister(Group)
@@ -14,10 +14,10 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ("title",)
 
 
-@admin.register(Commentary)
+@admin.register(Comment)
 class CommentaryAdmin(admin.ModelAdmin):
     list_display = ("post", "content", "created_time")
-    list_filter = ("user__username",)
+    list_filter = ("author__username",)
     search_fields = ("content",)
 
 

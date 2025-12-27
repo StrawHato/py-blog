@@ -12,8 +12,10 @@ class User(AbstractUser):
 
 
 class Post(models.Model):
-    owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts"
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="posts"
     )
     title = models.CharField(max_length=255)
     content = models.CharField(max_length=255)
@@ -23,11 +25,11 @@ class Post(models.Model):
         ordering = ("-created_time",)
 
     def __str__(self):
-        return f"{self.title} - {self.content} by {self.owner.username}"
+        return f"{self.title} - {self.content} by {self.author.username}"
 
 
-class Commentary(models.Model):
-    user = models.ForeignKey(
+class Comment(models.Model):
+    author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="comments"
